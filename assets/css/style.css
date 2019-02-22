@@ -1,0 +1,131 @@
+body, html {
+    height: 100%; /* Il faut le mettre pour que background-image fonctionne */
+    margin:0;
+    padding:0;
+    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+a:hover {
+    text-decoration: none;
+}
+.imageHome{
+  background-image: url("../images/fondHome.jpg");
+  height: 65%;
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.header {
+    position: absolute;
+    width: 100%;
+}
+.header  p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    margin-left: 0;
+    color: #e50914;
+    font-weight: 700;
+    font-size: 1.5em;
+}
+.inscrireBouton {
+    color: #fff !important;
+    background-color: #e50914;
+    line-height: normal;
+    margin: 18px 3% 0;
+    padding: 7px 17px;
+    font-weight: 600;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    font-size: 16px;
+    float: right;
+}
+
+#popular {
+    display: flex;
+    flex-wrap: wrap; /* Retour à la ligne */
+    justify-content: center;
+}
+.containerPopular {
+    width: 630px;
+    background-color: #fff;
+    display:flex;
+    margin-bottom: 35px;
+    box-shadow: 5px 8px 8px rgba(0,0,0,0.1);
+    margin-right: 48px;
+}
+.droite {
+    padding: 0px 18px;
+}
+.description {
+    word-wrap: break-word;
+    white-space: normal;
+    color: #4d4d4d;
+    font-size: 0.9em;
+    line-height: 1.2em;
+    margin-top: 30px;
+}
+
+/* .......................Page s'identifier..................... */
+.fondInscription {
+    background-image: url("../images/fondInscription.jpg");
+    height: 100%;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.headerLogin {
+    position: absolute;
+    top: 3%;
+    left: 3%;
+    font-weight: 700;
+    font-size: 1.5em;
+}
+.headerLogin a {
+    color:#e50914;
+}
+.form {
+    position: absolute;
+    left: 57%;
+    top: 24%;
+    right: 3%;
+}
+
+.containerForm {
+    background-color: rgba(0,0,0,.75);
+    color: white;
+    /* width: 50%; */
+    margin: 0 auto;
+    border-radius: 4px;
+    padding: 60px 68px 40px;
+}
+.registerForm {
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+    margin: 0 auto;
+    padding: 22px 0;
+}
+.registerForm input{
+    margin-bottom: 13px;
+    min-height: 38px;
+    padding-left: 10px;
+}
+.boutonRegister {
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 700;
+    /* margin: 24px 0 12px; */
+    background-color: red;
+    color: white;
+}
