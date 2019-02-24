@@ -30,9 +30,10 @@
                 <span>Sélectionné : {{ selected }}</span>
             </div>
         </nav>
+        <div id="parentRecherche">
             <input class="recherche" v-model="marecherche" placeholder="recherche">
-            <p>{{ marecherche }}</p>
-
+            <p> le message est : {{ marecherche }}</p>
+        </div>
     </header>
 
     <h1>Films populaires</h1>
@@ -64,15 +65,10 @@
             }
         }
     });
-    var marecherche = new Vue({
-        el: '.recherche',
+    var rechercher = new Vue({
+        el: '#parentRecherche',
         data: {
             marecherche : ''
-        },
-        methods: {
-            clackMaRecherche : function(){
-                alert(this.recherche);
-            }
         }
     })
 </script> 
