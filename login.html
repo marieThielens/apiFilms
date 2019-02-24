@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,23 +12,78 @@
 <div class="headerLogin">
     <a href="./index.html">MARIE MOVIE</a>
 </div>
+
+
     
-
-
 <div class="form">
     <div class="containerForm">
         <h1>S'identifier</h1>
-        <form class="registerForm">
-            <input type="text" placeholder="Email ou numéro de téléphone"/>
-            <input type="password" placeholder="Mot de passe"/>
+        <form 
+        class="registerForm"
+        @submit="verifierFormulaire"
+        action=""
+        novalidate="true"
+        >
+        <!-- Afficher les erreurs -->
+        <p v-if="errors.length">
+            <b>Veuillez corriger vos erreur(s):</b>
+            <ul>
+              <li v-for="error in errors">{{ error }}</li>
+            </ul>
+        </p>
+
+            <input v-model="mail" type="email" placeholder="Veuillez entrer votre mail"/>
+            <input v-model="password" type="password" placeholder="Mot de passe" />
             <button class="boutonRegister btn login-button btn-submit btn-small" type="submit" autocomplete="off" tabindex="0" data-uia="login-submit-button">S'identifier</button>
         </form>
         <form action="">
-            <input type="checkbox" id="remember" name="remember">Se souvenir de moi.
+            <input type="checkbox" id="remember" v-model="checked">
+            <label for="remember">{{checked? "Se souvenir de moi " : "Se souvenir de moi"}}</label>
         </form>
     </div>
 </div>
 <div class="fondInscription"></div>
+
+<!-- Vue.js -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+new Vue({
+    el:'.form',
+    data: {
+        errors: [], /* Tableau des erreurs */
+        mail : null, /* Aucune valeur, vide */
+        password : null,
+        checked : true /* valeur de "se souvenir de moi" en true */
+    },
+    methods: {
+        verifierFormulaire: function (e) {
+            // if (this.mail && this.password) { /* Ces deux champs sont obligatoires */
+            //     return true;
+            // }
+            this.errors = []; /* tableau erreur fonction verifierFormulaire*/
+
+            if(!this.mail) {
+                this.errors.push('Mail obligatoire');
+            } else if (!this.emailValide(this.mail)) {
+                this.errors.push("Le format du mail n'est pas valide");
+            }
+            if(!this.password) {
+                this.errors.push('Veuillez entrer un mot de passe');
+            }
+            if(!this.errors.length){
+                return true;
+            }
+
+            e.preventDefault();
+        },
+        emailValide: function (mail) {
+            var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(mail);  
+        }
+        
+    }
+})
+</script>
 
 
 <!-- Bootstrap -->

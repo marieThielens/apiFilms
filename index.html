@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -10,38 +10,72 @@
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
-    <!-- <h1>Github</h1>
-<div id="becode"></div> -->
 
-<!-- Image fond -->
-<div class="header">
-    <p>MARIE MOVIES</p>
-    <a class="inscrireBouton" href="./login.html">S'identifier</a>
-</div>
-<div class="imageHome"></div>
+    <!-- Image fond -->
+    <div class="header">
+        <p>MARIE MOVIES</p>
+        <a class="inscrireBouton" href="./login.html">S'identifier</a>
+    </div>
+    <div class="imageHome"></div>
 
-<nav>
-    <form id="search">
-            <input  type="text" placeholder="Search" id="search">
-            <input  type="submit" value="Ok" onclick="genreFilm()"/>
-    </form>
-</nav>
+    <header>
+        <nav class="navSearch">
+            <div class="choixGenre">
+                <select v-model="selected">
+                    <option disabled value="">Genre</option>
+                    <option>Animé</option>
+                    <option>Science-fiction</option>
+                    <option>Horreur </option>
+                </select>
+                <span>Sélectionné : {{ selected }}</span>
+            </div>
+        </nav>
+            <input class="recherche" v-model="marecherche" placeholder="recherche">
+            <p>{{ marecherche }}</p>
 
+    </header>
 
-<h1>Films populaires</h1>
-
-<div id="popular"></div>
-
-<div id="articles"></div>
-
+    <h1>Films populaires</h1>
+    <div class="parentPopular">
+        <div id="popular"></div>
+    </div>
+    <div id="articles"></div>
 
 
 <script src="./js/ajax.js"></script>
 <script src="./js/requete.js"></script>
+<!-- Vue.js -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <!-- Bootstrap -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+<script>
+    var app = new Vue({
+        el: '.choixGenre',
+        data: {
+            selected : ''
+        },
+        methods: { /* permet de réagir aux évènement */
+            clickRecherche: function() { /* Quand je clique sur mon bouton */
+                alert(this.recherche);
+            }
+        }
+    });
+    var marecherche = new Vue({
+        el: '.recherche',
+        data: {
+            marecherche : ''
+        },
+        methods: {
+            clackMaRecherche : function(){
+                alert(this.recherche);
+            }
+        }
+    })
+</script> 
 
 </body>
 </html>
