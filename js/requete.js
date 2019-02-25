@@ -1,35 +1,52 @@
 var popular = document.getElementById("popular");
+
 ajaxGet("https://api.themoviedb.org/3/movie/popular?api_key=040be6ed973ee07470f83d3d9cb13d36&language=en-US&page=1", function (reponse) {
-    // Transforme la réponse en un tableau d'articles
+    // Transforme la réponse en un tableau
     var popularMovie = JSON.parse(reponse);
     var resulat = popularMovie.results;
     resulat.forEach(function(element){
+        createHtml(element);
+        filmAlone(element);
 
-        let containerPopular = document.createElement("div");
-        containerPopular.classList.add("containerPopular");
-        let gauche = document.createElement("div");
-        gauche.classList.add("gauche");
-        let image = document.createElement("img");
-        image.src = "https://image.tmdb.org/t/p/w185_and_h278_bestv2" + element.poster_path;
-        let droite = document.createElement("div");
-        droite.classList.add("droite");   
-        let titre = document.createElement("h2");
-        titre.textContent = element.title;
-        let annee = document.createElement("span");
-        annee.textContent = element.release_date;
-        let description = document.createElement("p");
-        description.classList.add("description");
-        description.textContent = element.overview;
-
-        popular.appendChild(containerPopular);
-        containerPopular.appendChild(gauche);
-        containerPopular.appendChild(droite);
-        gauche.appendChild(image);
-        droite.appendChild(titre);
-        droite.appendChild(annee);
-        droite.appendChild(description);
-    })
+    });
 });
+
+var createHtml = function(element) {
+    let containerPopular = document.createElement("div");
+    containerPopular.classList.add("containerPopular");
+    containerPopular.classList.add("col-md-5");
+    let gauche = document.createElement("div");
+    gauche.classList.add("gauche");
+    let image = document.createElement("img");
+    image.classList.add("imageFilm");
+    image.src = "https://image.tmdb.org/t/p/w185_and_h278_bestv2" + element.poster_path;
+    let droite = document.createElement("div");
+    droite.classList.add("droite");   
+    let titre = document.createElement("h2");
+    titre.textContent = element.title;
+    let annee = document.createElement("span");
+    annee.textContent = element.release_date;
+    let description = document.createElement("p");
+    description.classList.add("description");
+    description.textContent = element.overview;
+
+    popular.appendChild(containerPopular);
+    containerPopular.appendChild(gauche);
+    containerPopular.appendChild(droite);
+    gauche.appendChild(image);
+    droite.appendChild(titre);
+    droite.appendChild(annee);
+    droite.appendChild(description);
+}
+
+var filmAlone = function(element) {
+    var image = document.addEventListener("click", function() {
+        document.getElementsByClassName("imageFilm");
+        var id = element.id;
+        console.log(id);
+    });
+}
+
 
 // var articlesElt = document.getElementById("articles");
 // ajaxGet("https://api.themoviedb.org/3/movie/popular?api_key=040be6ed973ee07470f83d3d9cb13d36&language=en-US&page=1", function (reponse) {
